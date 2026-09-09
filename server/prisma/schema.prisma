@@ -26,6 +26,8 @@ model User {
   accounts      Account[]
   roleId        String?
   role          Role?     @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  products      Product[]
+  orders        Order[]
 
   @@unique([email])
   @@map("user")
@@ -132,4 +134,31 @@ model Invitation {
   @@index([roleId])
   @@index([status])
   @@map("invitation")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  price       Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  orders      Order[]
+
+  @@map("product")
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+  quantity    Int
+  totalPrice  Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+
+  @@map("order")
 }
