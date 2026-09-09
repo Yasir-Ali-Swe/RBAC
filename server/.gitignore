@@ -1,0 +1,96 @@
+# ==========================================
+# Dependencies
+# ==========================================
+node_modules/
+
+
+# ==========================================
+# Environment variables / secrets
+# ==========================================
+.env
+.env.*
+!.env.example
+
+
+# ==========================================
+# Build output
+# ==========================================
+dist/
+build/
+coverage/
+
+# TypeScript build info
+*.tsbuildinfo
+
+
+# ==========================================
+# Prisma generated client
+# ==========================================
+src/lib/generated/
+src/generated/
+
+# Do NOT ignore:
+# prisma/schema.prisma
+# prisma/migrations/
+
+
+# ==========================================
+# Logs
+# ==========================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ==========================================
+# Docker
+# ==========================================
+# Dockerfile and docker-compose.yaml
+# SHOULD be committed.
+
+# Local Docker volumes/data if mounted into project
+postgres-data/
+redis-data/
+docker-data/
+
+
+# ==========================================
+# IDE / Editors
+# ==========================================
+.vscode/
+.idea/
+
+# VS Code local history
+.history/
+
+
+# ==========================================
+# OS files
+# ==========================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+
+# ==========================================
+# Temporary files
+# ==========================================
+tmp/
+temp/
+.cache/
+
+
+# ==========================================
+# Testing
+# ==========================================
+.nyc_output/
+
+
+# ==========================================
+# Miscellaneous
+# ==========================================
+*.bak
+*.tmp
+*.temp
