@@ -5,7 +5,6 @@ export type RoleName =
 
 export type PermissionName =
     | "users.read"
-    | "users.create"
     | "users.update"
     | "users.delete"
     | "users.invite"
