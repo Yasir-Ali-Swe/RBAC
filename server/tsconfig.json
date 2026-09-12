@@ -5,12 +5,14 @@
     "target": "ES2023",
     "strict": true,
     "esModuleInterop": true,
-    "ignoreDeprecations": "6.0",
-
-    "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*"
+  ]
 }
