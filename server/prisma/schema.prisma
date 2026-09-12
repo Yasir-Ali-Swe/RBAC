@@ -87,7 +87,7 @@ model Role {
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
   users       User[]
-  permisions  RolePermission[]
+  permissions RolePermission[]
   invitations Invitation[]
 
   @@map("role")
