@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "prisma db seed",
-    "dev": "tsx watch src/main.ts"
+    "dev": "tsx watch src/main.ts",
+    "worker": "tsx watch src/utils/email.worker.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,12 +17,16 @@
     "@prisma/adapter-pg": "^7.10.0",
     "@prisma/client": "^7.10.0",
     "better-auth": "^1.7.3",
+    "bullmq": "^6.3.4",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "ioredis": "^6.0.0",
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.12.0",
-    "pg": "^8.23.0"
+    "nodemailer": "^10.0.9",
+    "pg": "^8.23.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.10",
@@ -29,6 +34,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/node": "^26.5.0",
+    "@types/nodemailer": "^8.0.1",
     "@types/pg": "^8.23.1",
     "prisma": "^7.10.0",
     "tsx": "^4.23.13",
