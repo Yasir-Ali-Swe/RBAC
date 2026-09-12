@@ -29,7 +29,6 @@ const permissions = [
 const rolePermissions = {
     ADMIN: [
         "users.read",
-        "users.create",
         "users.update",
         "users.delete",
         "users.invite",
