@@ -21,6 +21,13 @@ export const requirePermission = (
                 });
             }
 
+            if (!user.roleId) {
+                return res.status(403).json({
+                    success: false,
+                    message: "You do not have permission to perform this action.",
+                });
+            }
+
             const rolePermission =
                 await prisma.rolePermission.findFirst({
                     where: {
@@ -52,4 +59,49 @@ export const requirePermission = (
             });
         }
     };
+};
+
+export const requireAdmin = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const user = req.user;
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Unauthorized access.",
+            });
+        }
+
+        if (!user.roleId) {
+            return res.status(403).json({
+                success: false,
+                message: "You do not have permission to perform this action.",
+            });
+        }
+
+        const role = await prisma.role.findUnique({
+            where: { id: user.roleId },
+            select: { name: true },
+        });
+
+        if (role?.name !== "ADMIN") {
+            return res.status(403).json({
+                success: false,
+                message: "You do not have permission to perform this action.",
+            });
+        }
+
+        next();
+    } catch (error) {
+        console.error("requireAdmin middleware error:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error.",
+        });
+    }
 };
